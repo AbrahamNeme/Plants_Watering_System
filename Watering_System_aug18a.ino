@@ -18,7 +18,7 @@
   These functions are generated with the Thing and added at the end of this sketch.
 */
 
-// DHT sensor library - Version: Latest
+// DHT sensor library
 #include <DHT.h>
 #include <DHT_U.h>
  
@@ -127,7 +127,7 @@ void loop() {
     // Turn pump on
     pumpOn();
     delay(8000);
-    // Turn pump off
+    // Turn pump off  --  I turn the pump on and off two times to ensure better water distribution for my design.
     digitalWrite(RELAY_OUT, LOW);
     delay(3000);
     // Turn pump on
