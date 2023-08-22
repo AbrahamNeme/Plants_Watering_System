@@ -1,0 +1,25 @@
+:Author: abrahamneme
+:Email:
+:Date: 18/08/2023
+:Revision: version#
+:License: Public Domain
+
+= Project: Watering System
+
+This project makes use of an Arduino nano 33 IoT and the arduino Cloud infrastructure to create an automatic 
+watering system for garden plants. Make sure to download the required libraries for the Arduino nano 33 IoT board, 
+wifi and arduino cloud functionalities. You will also need the DHT and I2C libraries for the sensor.
+
+=== BOM
+The list of the materials you need for this project.
+
+|===
+| ID | Part name                              | Quantity
+| D1 | DHT11 sensor                           | 1    
+| R1 | 5v Relay                               | 1        
+| A1 | Arduino nano 33 IoT                    | 1   
+| W1 | Water pump                             | 1
+| C1 | Capacitive soil moisture sensor V2.0   | 1
+| S1 | Supply Module MB102  (optional)        | 1   
+| P1 | Power supply                           | 1  
+|===
