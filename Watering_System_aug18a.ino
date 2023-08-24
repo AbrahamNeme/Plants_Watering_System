@@ -41,11 +41,14 @@ const int DryValue = 3044;
 const int WetValue = 1130;
  
 // Variables for soil moisture
-int soilMoistureValue;
+int soilMoistureValue1;
+int soilMoistureValue2;
+int soilMoistureAverage;
 int soilMoisturePercent;
  
-// Analog input port
-#define SENSOR_IN 0
+// Analog input ports
+#define SENSOR_IN1 0
+#define SENSOR_IN2 1
  
 // Relay Port
 #define RELAY_OUT 3
@@ -106,17 +109,23 @@ void loop() {
   temperature = temp;
   humidity = hum;
  
-  // Get soil mositure value
-  soilMoistureValue = analogRead(SENSOR_IN);
+  // Get soil moisture values
+  soilMoistureValue1 = analogRead(SENSOR_IN1);
+  soilMoistureValue2 = analogRead(SENSOR_IN2);
  
+  // Get soil moisture average value
+  soilMoistureAverage = ((soilMoistureValue1 + soilMoistureValue2) / 2);
+
   // Determine soil moisture percentage value
-  soilMoisturePercent = map(soilMoistureValue, DryValue, WetValue, 0, 100);
+  soilMoisturePercent = map(soilMoistureAverage, DryValue, WetValue, 0, 100);
  
   // Keep values between 0 and 100
   soilMoisturePercent = constrain(soilMoisturePercent, 0, 100);
  
-  // Print raw value to serial monitor for sensor calibration
-  Serial.println(soilMoistureValue);
+  // Print raw values to serial monitor for sensor calibration
+  Serial.println("1. sensor value: " + String(soilMoistureValue1));
+  Serial.println("2. sensor value: " + String(soilMoistureValue2));
+  Serial.println("Average value: " + String(soilMoistureAverage));
  
   // Pass soil moisture to cloud variable
   moisture = soilMoisturePercent;
